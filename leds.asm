@@ -51,7 +51,7 @@ choose:     call getch              ; get the pattern selection digit
             jnc choose              ; go back for another if the selection digit is less than '1'
             mov A,#'9'
             call compare            ; compare selection digit in R3 to '9'
-            jc next                 ; go back for another if the selection digit is equal to or greater than '7'
+            jc next                 ; go back for another if the selection digit is equal to or greater than '9'
 
             mov A,#lo(prompt1txt)   ; display 'Press any key...'
             call txtout
@@ -63,7 +63,7 @@ choose:     call getch              ; get the pattern selection digit
             mov R1,A                ; else, use the input digit as a counter in R1
             clr A
             add A,#17                       
-            djnz R1,$-2             ; add 18 (the length of each entry) for each count
+            djnz R1,$-2             ; add 17 (the length of each entry) for each count
             mov offset,A            ; save it in R7
            
 loop0:      mov A,#lo(patterns)     ; address of the delay value of the first entry in the array
